@@ -3,6 +3,15 @@ import classes from "./page.module.css";
 import { notFound } from "next/navigation";
 import { getMealById } from "@/lib/meal";
 
+export function generateMetaData({ params }) {
+  const meal = getMealById(params.mealSlug);
+
+  return {
+    title: `${meal.title} - NextLevel Food`,
+    description: meal.summary,
+  };
+}
+
 export default function MealsDetailsPage({ params }) {
   const meal = getMealById(params.mealSlug);
 
